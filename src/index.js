@@ -1,10 +1,10 @@
 import "@babel/polyfill";
+import connectDB from "./database";
 
 import app from "./server";
 
-async function main() {
-	await app.listen(app.get("port"));
-	console.log("Server on port ", app.get("port"));
-}
+connectDB()
 
-main();
+app.listen(app.get("port"), () => {
+	console.log("Server on port", app.get("port"));
+})
